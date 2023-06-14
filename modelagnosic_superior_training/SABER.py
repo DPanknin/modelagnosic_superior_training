@@ -19,11 +19,11 @@ from gpytorch.mlls.exact_marginal_log_likelihood import ExactMarginalLogLikeliho
 from gpytorch.utils.memoize import clear_cache_hook, _add_to_cache_ignore_args, _is_in_cache_ignore_args
 from gpytorch.lazy import DiagLazyTensor
 import numpy as np
-from AL_base import myScientificFormat
+from .AL_base import myScientificFormat
 import functools
 import math
-from globalModel import *
-from moe import MoE, SparseDispatcher
+from .globalModel import *
+from .moe import MoE, SparseDispatcher
 from copy import copy
 
 def initSABERpars(expPars = None, modelPars = None, alPars = None):

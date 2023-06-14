@@ -6,7 +6,7 @@ import numpy as np
 import os
 import torch
 from sklearn.neighbors import NearestNeighbors
-from myKMeans import myKMeans
+from .myKMeans import myKMeans
 
 def randInputUnif(size, inputSpaceBounds, xTrain = []):
     inputDim = inputSpaceBounds.shape[1]

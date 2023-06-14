@@ -5,9 +5,9 @@ This module implements several inducing point selection methods.
 import numpy as np
 import scipy as sp
 import torch
-from svgd import SVGD
-from myKMeans import myKMeans
-from AL_base import myScientificFormat
+from .svgd import SVGD
+from .myKMeans import myKMeans
+from .AL_base import myScientificFormat
 import gpytorch
 from gpytorch.constraints import Positive
 

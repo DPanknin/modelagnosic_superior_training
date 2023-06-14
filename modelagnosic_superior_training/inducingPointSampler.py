@@ -2,7 +2,7 @@
 This module sets up the inducing point construction function, based on so far obtained information from the AL framework.
 """
 
-from inducingPointMethods import SVGD_inducing_points, kMeans_inducing_points, random_inducing_points, GFF_inducing_points
+from .inducingPointMethods import SVGD_inducing_points, kMeans_inducing_points, random_inducing_points, GFF_inducing_points
 
 def initIPsamplerPars(ipSelectionPars = None, alPars = None, modelPars = None):
     pars = {}

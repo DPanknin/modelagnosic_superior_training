@@ -5,9 +5,9 @@ Details on this framework can be found in "Local Function Complexity for Active 
 https://arxiv.org/abs/1902.10664, https://arxiv.org/abs/2105.11990
 """
 
-from AL_base import *
+from .AL_base import *
 
-class saberActiveLearner():
+class activeLearner():
     
     def __init__(self, expPars, alPars, testDensity, randTestDistribution, randPInit, pInit, randUniform, labelOracle = None, xPool = None, yPool = None, densityPool = None, invalidPoolInx = None, testDensityPool = None, pInitPool = None, xRef = None):
         self.alPars = alPars
