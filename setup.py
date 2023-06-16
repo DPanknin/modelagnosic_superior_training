@@ -5,9 +5,7 @@ from modelagnosic_superior_training import __version__
 readme = open("README.md").read()
 
 install_requires = [
-#    "faiss>=1.5.3",
     "numpy>=1.23.5",
-#    "pykeops>=2.1.2",
     "scikit_learn>=1.0.2",
     "scipy>=1.10.0",
     "torch>=1.13.1",
