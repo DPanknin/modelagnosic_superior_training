@@ -64,9 +64,9 @@ class SVGD():
             if repulsionPropToDensity and not prob is None or lnprob is None:
                 # update probs
                 if probs is None or fixedIndices is None:
-                    probs = prob(theta, inputSpaceBounds)
+                    probs = prob(theta)
                 else:
-                    probs[~fixedIndices] = prob(theta[~fixedIndices], inputSpaceBounds)
+                    probs[~fixedIndices] = prob(theta[~fixedIndices])
 
             if not lnprob is None:
                 # update lnpgrad
