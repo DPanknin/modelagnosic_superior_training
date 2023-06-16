@@ -24,4 +24,4 @@ conda install modelagnosic_superior_training -c modelagnosic_superior_training
 
 
 ## License
-modelagnosic_superior_training is [MIT licensed].
+modelagnosic_superior_training is [MIT licensed](https://github.com/DPanknin/modelagnosic_superior_training/blob/main/LICENSE).

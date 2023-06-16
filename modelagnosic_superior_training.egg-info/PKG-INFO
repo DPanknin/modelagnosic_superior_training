@@ -8,7 +8,7 @@ Author-email: danny.panknin@gmail.com
 License: MIT
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
-License-File: LICENSE.txt
+License-File: LICENSE
 
 # modelagnosic_superior_training
 
@@ -36,4 +36,4 @@ conda install modelagnosic_superior_training -c modelagnosic_superior_training
 
 
 ## License
-modelagnosic_superior_training is [MIT licensed].
+modelagnosic_superior_training is [MIT licensed](https://github.com/DPanknin/modelagnosic_superior_training/blob/main/LICENSE).
