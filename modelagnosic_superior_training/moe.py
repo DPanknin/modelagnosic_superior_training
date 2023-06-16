@@ -36,7 +36,8 @@ from torch.distributions.normal import Normal
 import numpy as np
 import gpytorch
 from gpytorch.distributions import MultivariateNormal
-from gpytorch.lazy import DiagLazyTensor, lazify
+from linear_operator.operators import DiagLinearOperator
+from linear_operator import to_linear_operator
 
 class SparseDispatcher(object):
     """Helper for implementing a mixture of experts.
@@ -360,10 +361,10 @@ class MoE(nn.Module):
                     else:
                         preds = precalcExpertY[i][batch_inx[i]]
                         if predictionsOnly:
-                            covar = DiagLazyTensor(torch.ones_like(preds))
+                            covar = DiagLinearOperator(torch.ones_like(preds))
                         else:
                             covar = precalcExpertCovar[i][batch_inx[i]][:, batch_inx[i]]
-                        predDist = MultivariateNormal(preds, lazify(covar))
+                        predDist = MultivariateNormal(preds, to_linear_operator(covar))
                         if preds.dim() == 1:
                             preds = preds.unsqueeze(-1)
                 else:

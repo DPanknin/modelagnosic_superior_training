@@ -14,7 +14,9 @@ from gpytorch.distributions import MultivariateNormal
 from gpytorch.mlls._approximate_mll import _ApproximateMarginalLogLikelihood
 from gpytorch.mlls.exact_marginal_log_likelihood import ExactMarginalLogLikelihood
 from gpytorch.utils.memoize import clear_cache_hook, _add_to_cache_ignore_args, _is_in_cache_ignore_args
-from gpytorch.lazy import DiagLazyTensor
+
+from linear_operator.operators import DiagLinearOperator, BlockDiagLinearOperator, TriangularLinearOperator
+
 import numpy as np
 from .AL_base import myScientificFormat
 import functools
@@ -1053,7 +1055,7 @@ class ExactGPModel(gpytorch.models.ExactGP):
         
     def looPredictiveDistribution(self, **kwargs):
         if _is_in_cache_ignore_args(self, "mu"):
-            return MultivariateNormal(self._memoize_cache['mu'], DiagLazyTensor(self._memoize_cache['sigma2']))
+            return MultivariateNormal(self._memoize_cache['mu'], DiagLinearOperator(self._memoize_cache['sigma2']))
         else:
             #print('going into loo Preds')
             trbckup = self.training
@@ -1082,7 +1084,7 @@ class ExactGPModel(gpytorch.models.ExactGP):
                 functools.update_wrapper(wrapper, clear_cache_hook)
                 sigma2.grad_fn.register_hook(wrapper)
         
-        return MultivariateNormal(mu, DiagLazyTensor(sigma2))
+        return MultivariateNormal(mu, DiagLinearOperator(sigma2))
     
 class derivativeExactGPModel(gpytorch.models.ExactGP):
     def __init__(self, train_x, train_y, likelihood, initialMean = None, inducing_points = None, initialBandwidth = None, initialLambda = None, applyARD = False, useLabels = True, doublePrecision = True, jitter = None, cholJitter = None, fixedInducingPoints = True):
@@ -1156,9 +1158,9 @@ class derivativeExactGPModel(gpytorch.models.ExactGP):
 
         if _is_in_cache_ignore_args(self, "mu"):
             if calculateSigma:
-                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLazyTensor(self._memoize_cache['sigma2']))
+                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLinearOperator(self._memoize_cache['sigma2']))
             else:
-                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLazyTensor(torch.ones_like(self._memoize_cache['mu']).flatten(-2)))
+                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLinearOperator(torch.ones_like(self._memoize_cache['mu']).flatten(-2)))
         else:
             trbckup = self.training
             self.training = True
@@ -1188,17 +1190,17 @@ class derivativeExactGPModel(gpytorch.models.ExactGP):
                 sigma2.grad_fn.register_hook(wrapper)
         
         if calculateSigma:
-            return MultitaskMultivariateNormal(mu, DiagLazyTensor(sigma2))
+            return MultitaskMultivariateNormal(mu, DiagLinearOperator(sigma2))
         else:
-            return MultitaskMultivariateNormal(mu, DiagLazyTensor(torch.ones_like(mu).flatten(-2)))
+            return MultitaskMultivariateNormal(mu, DiagLinearOperator(torch.ones_like(mu).flatten(-2)))
         
     def locoPredictiveDistribution(self, calculateSigma = True): # this is the leave-one-configuration-out version of loo
     
         if _is_in_cache_ignore_args(self, "mu"):
             if calculateSigma:
-                return MultitaskMultivariateNormal(self._memoize_cache['mu'], BlockDiagLazyTensor(self._memoize_cache['sigma2']))
+                return MultitaskMultivariateNormal(self._memoize_cache['mu'], BlockDiagLinearOperator(self._memoize_cache['sigma2']))
             else:
-                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLazyTensor(torch.ones_like(self._memoize_cache['mu']).flatten(-2)))
+                return MultitaskMultivariateNormal(self._memoize_cache['mu'], DiagLinearOperator(torch.ones_like(self._memoize_cache['mu']).flatten(-2)))
         else:
             trbckup = self.training
             self.training = True
@@ -1222,7 +1224,7 @@ class derivativeExactGPModel(gpytorch.models.ExactGP):
             for i in range(numConfigs):
                 configInx = i*self.outputDimension + np.arange(self.outputDimension)
                 Lsub = psd_safe_cholesky(covInv[configInx][:, configInx].type(gpytorch.settings._linalg_dtype_cholesky.value()), jitter = self.cholJitter, max_tries=100)
-                Lsub = TriangularLazyTensor(Lsub)
+                Lsub = TriangularLinearOperator(Lsub)
                 mu[i] -= Lsub._cholesky_solve(muFull[configInx].unsqueeze(-1), upper=False).squeeze(-1)
                 if calculateSigma:
                     sigma2[i] = Lsub._cholesky_solve(smallIdentity, upper=False)
@@ -1241,9 +1243,9 @@ class derivativeExactGPModel(gpytorch.models.ExactGP):
                 sigma2.grad_fn.register_hook(wrapper)
         
         if calculateSigma:
-            return MultitaskMultivariateNormal(mu, BlockDiagLazyTensor(sigma2))
+            return MultitaskMultivariateNormal(mu, BlockDiagLinearOperator(sigma2))
         else:
-            return MultitaskMultivariateNormal(mu, DiagLazyTensor(torch.ones_like(mu).flatten(-2)))
+            return MultitaskMultivariateNormal(mu, DiagLinearOperator(torch.ones_like(mu).flatten(-2)))
         
 class ApproxGPModel(gpytorch.models.ApproximateGP):
     def __init__(self, inducing_points, likelihood = None, initialBandwidth = None, initialLambda = None, fixedInducingPoints = True, inducingCovarType = 'scalar', applyARD = False, initConstant = 0.):

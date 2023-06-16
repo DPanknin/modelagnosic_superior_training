@@ -17,7 +17,6 @@ from gpytorch.distributions import MultivariateNormal
 from gpytorch.mlls._approximate_mll import _ApproximateMarginalLogLikelihood
 from gpytorch.mlls.exact_marginal_log_likelihood import ExactMarginalLogLikelihood
 from gpytorch.utils.memoize import clear_cache_hook, _add_to_cache_ignore_args, _is_in_cache_ignore_args
-from gpytorch.lazy import DiagLazyTensor
 import numpy as np
 from .AL_base import myScientificFormat
 import functools
