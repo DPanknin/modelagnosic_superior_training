@@ -7,7 +7,7 @@ modelagnosic_superior_training implements a model-agnostic active learning appro
 
 ## Examples, Tutorials, and Documentation
 
-See our [**examples**] on how to apply the active learning framework on regression problems.
+See our [**examples**](https://github.com/DPanknin/modelagnosic_superior_training/tree/main/examples) on how to apply the active learning framework on regression problems.
 
 ## Installation
 
