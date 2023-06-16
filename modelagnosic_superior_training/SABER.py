@@ -657,7 +657,7 @@ class SABER(nn.Module):
             #likelihood.train()
         else:
             allXValDistribution = None
-
+            
         if allXValDistribution is None:
             val_yPred = None
             val_covar = None
@@ -927,12 +927,6 @@ class SABER(nn.Module):
             epoch += 1
             if (epoch >= self.pars['maxEPOCH'] or optimizer.param_groups[0]['lr'] == par_lr_thresholds[0]):
                 break
-            
-        #gate.eval()
-        #if not self.pars['fixedExperts']:
-        #    if self.pars['expertModel'] == 'variationalGP' or looScenario:
-        #        experts.eval()
-        #likelihood.eval()
             
         self.eval()
         
