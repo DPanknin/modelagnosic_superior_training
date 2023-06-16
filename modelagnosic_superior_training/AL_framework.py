@@ -47,9 +47,11 @@ class activeLearner():
         self.localBandwidthFunction = None
         self.labelOracle = labelOracle
         
-    def importPreviousData(self, X, y, densitiesInformation = []):
+    def importPreviousData(self, X, y, trainInx = None, densitiesInformation = []):
         self.X = X
         self.y = y
+        if not trainInx is None:
+            self.trainInx = trainInx
         self.densitiesInformation = densitiesInformation
         self.updateTrainImportanceWeights()
         
