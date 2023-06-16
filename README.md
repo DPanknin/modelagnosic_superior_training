@@ -18,8 +18,7 @@ See our [**examples**](https://github.com/DPanknin/modelagnosic_superior_trainin
 Install modelagnosic_superior_training using pip or conda:
 
 ```bash
-pip install modelagnosic_superior_training
-conda install modelagnosic_superior_training -c modelagnosic_superior_training
+pip install git+https://github.com/DPanknin/modelagnosic_superior_training.git
 ```
 
 
