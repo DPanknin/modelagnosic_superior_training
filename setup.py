@@ -9,6 +9,7 @@ install_requires = [
     "scikit_learn>=1.0.2",
     "scipy>=1.10.0",
     "torch>=1.13.1",
+    'linear_operator @ git+https://github.com/DPanknin/linear_operator.git'
     'gpytorch @ git+https://github.com/DPanknin/gpytorch.git'
 ]
 
