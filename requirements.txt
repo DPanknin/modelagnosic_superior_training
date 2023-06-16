@@ -1,6 +1,5 @@
-faiss==1.5.3
+pip install git+https://github.com/DPanknin/gpytorch.git
 numpy==1.23.5
-pykeops==2.1.2
 scikit_learn==1.0.2
 scipy==1.10.0
 torch==1.13.1
