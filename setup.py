@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-from modelagnosic_superior_training import __version__
+from modelagnostic_superior_training import __version__
 
 readme = open("README.md").read()
 
@@ -9,19 +9,20 @@ install_requires = [
     "scikit_learn>=1.0.2",
     "scipy>=1.10.0",
     "torch>=1.13.1",
+    "matplotlib",
     'linear_operator @ git+https://github.com/DPanknin/linear_operator.git',
     'gpytorch @ git+https://github.com/DPanknin/gpytorch.git'
 ]
 
 setup(
-    name='modelagnosic_superior_training',
+    name='modelagnostic_superior_training',
     version=__version__,
     
     description="An implementation of the model-agnostic superior training framework based on a mixture of Gaussian processes model in gPyTorch",
     long_description=readme,
     long_description_content_type="text/markdown",
 
-    url='https://github.com/DPanknin/modelagnosic_superior_training',
+    url='https://github.com/DPanknin/modelagnostic_superior_training',
     author='Danny Panknin',
     author_email='danny.panknin@gmail.com',
 
