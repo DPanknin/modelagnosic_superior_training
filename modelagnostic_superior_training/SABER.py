@@ -304,13 +304,13 @@ class SABER(nn.Module):
                 # if we got a state_dict to load, prepare some fitting dummy IPs here
                 if self.pars['expertModel'] == 'excatGP':
                     for l in range(len(self.pars['expertBandwidths'])):
-                        if 'model.experts.'+str(l)+'.model.covar_module.inducing_points' in saberModelDict:
-                            inducing_points_expert = torch.zeros_like(saberModelDict['model.experts.'+str(l)+'.model.covar_module.inducing_points'])
+                        if 'model.experts.'+str(l)+'.model.covar_module.inducing_points' in modelStateDict:
+                            inducing_points_expert = torch.zeros_like(modelStateDict['model.experts.'+str(l)+'.model.covar_module.inducing_points'])
                         else:
                             inducing_points_expert = None
                 if self.pars['expertModel'] == 'variationalGP':
                     for l in range(len(self.pars['expertBandwidths'])):
-                        inducing_points_expert = torch.zeros_like(saberModelDict['model.experts.'+str(l)+'.model.variational_strategy.inducing_points'])
+                        inducing_points_expert = torch.zeros_like(modelStateDict['model.experts.'+str(l)+'.model.variational_strategy.inducing_points'])
 
             # arrange params of each global GPR model in the MoE
             modelPars = copy(self.pars)
@@ -366,7 +366,7 @@ class SABER(nn.Module):
 
             inducing_points_gate = torch.from_numpy(inducing_points_gate[None].repeat(len(experts),axis=0)).type(self.yExpert.dtype)
         else:
-            inducing_points_gate = torch.zeros_like(saberModelDict['model.gate.variational_strategy.base_variational_strategy.inducing_points'])
+            inducing_points_gate = torch.zeros_like(modelStateDict['model.gate.variational_strategy.base_variational_strategy.inducing_points'])
 
         gate = MultitaskApproxGPModel(inducing_points_gate, len(experts), initialBandwidth = self.pars['initSigmaGate'], initialLambda = self.pars['initLambdaGate'], fixedInducingPoints = self.pars['fixedIPlocationsGate'], inducingCovarType = self.pars['inducingCovarTypeGate'], outputType = self.pars['gateOutputType'])
         if self.pars['doublePrecision']:
