@@ -309,9 +309,9 @@ class activeLearner():
         else:
             if self.densitiesInformation[fromIteration]['sigmaOfPool'] is None:
                 if inxes is None:
-                    return self.LOBestimate(xPool)
+                    return self.LOBestimate(self.xPool)
                 else:
-                    return self.LOBestimate(xPool[inxes])
+                    return self.LOBestimate(self.xPool[inxes])
             else:
                 if inxes is None:
                     return self.densitiesInformation[fromIteration]['sigmaOfPool']
