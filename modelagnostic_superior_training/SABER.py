@@ -834,6 +834,7 @@ class SABER(nn.Module):
                     loss_str += ' + ' + myScientificFormat(bwLoss) + ' (bandwidth penalty)'
 
                 loss_str = 'Loss: ' + myScientificFormat(loss) + ' = ' + loss_str
+                self.loss_str = loss_str
 
                 optimizer.zero_grad()   # clear gradients for next train
                 loss.backward()         # backpropagation, compute gradients
@@ -921,12 +922,15 @@ class SABER(nn.Module):
                 else:
                     printLambda = myScientificFormat(experts[0].model.covar_module.base_kernel.outputscale.item())
                 print('Iter '+str(epoch+1), (', expert mean ' + printMean if self.pars['labelModel'] else ''), printNoise, ', lambda ', printLambda, ', gate sigma ', myScientificFormat(gate.covar_module.base_kernel.lengthscale[0].item()), ', lambda ', myScientificFormat(gate.covar_module.outputscale[0].item()), ' noisy gating ', ([myScientificFormat(torch.exp(b).item()) for b in self.model.b_noise[0]] if self.pars['noisy_gating_b'] else myScientificFormat(torch.exp(self.model.b_noise[0,0]).item())), sep='')
-
                 print(loss_str)
+                
                 if self.valLoss == 'mse':
-                    print('current validation RMSE: ', valLoss)
+                    val_loss_str = 'current validation RMSE: ' + str(valLoss)
                 if self.valLoss == 'mll':
-                    print('current validation MLL: ', valLoss)
+                    val_loss_str = 'current validation MLL: ' + str(valLoss)
+                self.val_loss_str = val_loss_str
+                    
+                print(val_loss_str)
                 print('current learning rate: ', myScientificFormat(optimizer.param_groups[0]['lr']))
 
             epoch += 1
