@@ -15,7 +15,7 @@ See our [**examples**](https://github.com/DPanknin/modelagnostic_superior_traini
 - Python >= 3.9
 - PyTorch >= 1.13.1
 
-Install modelagnostic_superior_training using pip or conda:
+Install modelagnostic_superior_training using pip:
 
 ```bash
 pip install git+https://github.com/DPanknin/modelagnosic_superior_training.git
