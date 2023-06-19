@@ -1,3 +1,10 @@
+'''
+This module implements k-means clustering via Lloyd's algorithm with some extensions.
+
+E.g., it includes the distribution preserving version as proposed in "Distributional Clustering: A distribution-preserving clustering method" by (Krishna et. al, 2019)
+https://arxiv.org/abs/1911.05940
+'''
+
 import scipy.sparse as sp
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.utils.extmath import row_norms, stable_cumsum

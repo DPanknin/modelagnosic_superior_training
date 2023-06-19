@@ -1,3 +1,10 @@
+"""
+This module contains an implementation of the Stein Variational Gradient Descent (SVGD) algorithm. In this package, SVGD is used to produce a diverse set of inducing points for sparse Gaussian process regression models, where the set of inducing points follow a specified target distribution.
+
+Details on this algorithm can be found in "Stein Variational Gradient Descent: A General Purpose Bayesian Inference Algorithm" by (Liu and Wang, 2016)
+https://proceedings.neurips.cc/paper/2016/file/b3ba8f1bee1238a2f37603d90b58898d-Paper.pdf
+"""
+
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
 

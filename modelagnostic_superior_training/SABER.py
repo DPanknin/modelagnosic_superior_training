@@ -3,6 +3,11 @@ This module contains all definitions and routines of the sparse mixture of Gauss
 
 Details on this model can be found in "Local Function Complexity for Active Learning via Mixture of Gaussian Processes" by (Panknin et. al, 2022)
 https://arxiv.org/abs/1902.10664
+
+The model is built using the GPyTorch library.
+
+Details on this library can be found in "GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration" by (Gardner et. al, 2018)
+https://proceedings.neurips.cc/paper/2018/file/27e8e17134dd7083b050476733207ea1-Paper.pdf
 """
 
 import torch

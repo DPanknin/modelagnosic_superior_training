@@ -1,34 +1,15 @@
 """
-This module contains the definition of the sparse mixture of Gaussian processes model.
+This module contains the definition of the sparse mixture of experts model.
 
 This code is an adaption/extension of the "Sparsely Gated Mixture of Experts Layer" implementation by David Rau:
 https://github.com/davidmrau/mixture-of-experts
 
 Details on this layer can be found in "Outrageously Large Neural Networks" by (Shazeer et. al, 2017)
 https://arxiv.org/abs/1701.06538
-"""
 
-# MIT License
-#
-# Copyright (c) 2023 Danny Panknin
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+Details on the local adaptions can be found in "Local Function Complexity for Active Learning via Mixture of Gaussian Processes" by (Panknin et. al, 2022)
+https://arxiv.org/abs/1902.10664
+"""
 
 import torch
 import torch.nn as nn

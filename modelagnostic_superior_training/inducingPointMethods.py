@@ -81,6 +81,13 @@ class random_inducing_points():
         inxes = np.random.choice(np.arange(len(self.X)), m, replace = False, p = self.resamplingWeights)
         inducing_points = torch.tensor(self.X[inxes])
         return inducing_points
+    
+'''
+This class implements the Greedy Fast Forward (GFF) inducing point selection method.
+
+Details on this method can be found in "Fast Forward Selection to Speed Up Sparse Gaussian Process" by (Seeger et. al, 2003)
+http://proceedings.mlr.press/r4/seeger03a/seeger03a.pdf
+'''
 
 class GFF_inducing_points():
     

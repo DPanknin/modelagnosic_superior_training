@@ -1,7 +1,7 @@
 """
 This module contains the definitions and routines of the model-agnostic, asymptotically superior AL framework in a pool-based or query synthesis AL scenario.
 
-Details on this framework can be found in "Local Function Complexity for Active Learning via Mixture of Gaussian Processes" by (Panknin et. al, 2022) and "Optimal Sampling Density for Nonparametric Regression" by (Panknin et. al, 2021).
+Details on this framework can be found in "Local Function Complexity for Active Learning via Mixture of Gaussian Processes" by (Panknin et. al, 2022) and "Optimal Sampling Density for Nonparametric Regression" by (Panknin et. al, 2021)
 https://arxiv.org/abs/1902.10664, https://arxiv.org/abs/2105.11990
 """
 
