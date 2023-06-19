@@ -7,7 +7,7 @@ modelagnostic_superior_training implements a model-agnostic active learning appr
 
 ## Examples, Tutorials, and Documentation
 
-See our [**examples**] on how to apply the active learning framework on regression problems.
+See our [**examples**](https://github.com/DPanknin/modelagnostic_superior_training/blob/main/examples) on how to apply the active learning framework on regression problems.
 
 ## Installation
 
@@ -18,8 +18,7 @@ See our [**examples**] on how to apply the active learning framework on regressi
 Install modelagnostic_superior_training using pip or conda:
 
 ```bash
-pip install modelagnostic_superior_training
-conda install modelagnostic_superior_training -c modelagnostic_superior_training
+pip install git+https://github.com/DPanknin/modelagnosic_superior_training.git
 ```
 
 
