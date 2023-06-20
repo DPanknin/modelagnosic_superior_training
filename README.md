@@ -18,7 +18,7 @@ See our [**examples**](https://github.com/DPanknin/modelagnostic_superior_traini
 Install modelagnostic_superior_training using pip:
 
 ```bash
-pip install git+https://github.com/DPanknin/modelagnosic_superior_training.git
+pip install git+https://github.com/DPanknin/modelagnostic_superior_training.git
 ```
 
 
