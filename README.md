@@ -3,7 +3,7 @@
 ---
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-modelagnostic_superior_training implements a model-agnostic active learning approach for regression. In particular, it implements sampling from the model-agnostic superior training density, which is calculated via the Spatially Adaptive Bandwidth Estimation in Regression (SABER) approach. SABER is a sparse Mixture of Gaussian processes model with implementation is GPyTorch and PyTorch.
+modelagnostic_superior_training implements a model-agnostic active learning approach for regression. In particular, it implements sampling from the model-agnostic superior training density, which is calculated via the Spatially Adaptive Bandwidth Estimation in Regression (SABER) approach. SABER is a sparse Mixture of Gaussian processes model with implementation in GPyTorch and PyTorch.
 
 ## Examples, Tutorials, and Documentation
 
